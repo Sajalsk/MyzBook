@@ -18,17 +18,18 @@ router.post("/createuser",
     body("password").isLength({ min: 5 }),
   ],
   async (req, res) => {
+    let success = false
     // if there are error show this
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({ error: "Already Exist" });
+        return res.status(400).json({success,  error: "Already Exist" });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -51,8 +52,9 @@ router.post("/createuser",
       };
 
       const authtoken = jwt.sign(data, JWT_Secret);
+      success = true
       // console.log(jwtData);
-      res.json({ authtoken });
+      res.json({ success, authtoken });
 
     } catch (error) {
       console.error(error.message);
@@ -70,6 +72,7 @@ router.post(
     body("password", "password cannot be blank").exists(),
   ],
   async (req, res) => {
+    let success = false;
     // if there are error show this
 
     const errors = validationResult(req);
@@ -82,12 +85,14 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
+        success = false;
         return res.status(400).json({ error: "Incorrect Credentials" });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        return res.status(400).json({ error: "Incorrect Credentials" });
+        success=false;
+        return res.status(400).json({ sucess,error: "Incorrect Credentials" });
       }
 
       const data = {
@@ -98,7 +103,8 @@ router.post(
 
       const authtoken = jwt.sign(data, JWT_Secret);
       // console.log(jwtData);
-      res.json({ authtoken });
+      success=true;
+      res.json({ success, authtoken });
 
     } catch (error) {
       console.error(error.message);
