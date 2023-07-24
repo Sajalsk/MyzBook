@@ -24,12 +24,10 @@ const Login = (props) => {
     if (json.success) {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
-      props.showAlert("Logged in Successfully" , "success");
+      props.showAlert("Logged in Successfully", "success");
       navigate("/");
-
     } else {
-     
-      props.showAlert("Invalid credentials" , "danger");
+      props.showAlert("Invalid credentials", "danger");
     }
   };
 
@@ -38,50 +36,47 @@ const Login = (props) => {
   };
 
   return (
-   
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="register">
         <h1>Login</h1>
-     
-          <input
-            type="email"
-            placeholder='Your email' 
-            className="form-control"
-            value={credentials.email}
-            onChange={onChange}
-            id="email"
-            name="email"
-            aria-describedby="emailHelp"
-          />
-       
-          <input
-            type="password"
-            className="form-control"
-            placeholder='Your password'
-            value={credentials.password}
-            onChange={onChange}
-            name="password"
-            id="password"
-          />
 
-          
+        <input
+          type="email"
+          placeholder="Your email"
+          className="form-control"
+          value={credentials.email}
+          onChange={onChange}
+          id="email"
+          name="email"
+          aria-describedby="emailHelp"
+        />
 
-         <button type="submit" className="button" style={{height:"50px", width:"350px"}}>
-         Login
-          </button>
-       
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Your password"
+          value={credentials.password}
+          onChange={onChange}
+          name="password"
+          id="password"
+        />
+
+        <button
+          type="submit"
+          className="button"
+          style={{ height: "50px", width: "350px" }}
+        >
+          Login
+        </button>
+
         <div>or</div>
 
         <div className="button" onClick={() => navigate("/Signup")}>
           Register
         </div>
       </div>
-      </form>
-    
+    </form>
   );
 };
 
 export default Login;
-
-
-

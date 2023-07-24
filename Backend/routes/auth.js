@@ -65,8 +65,7 @@ router.post("/createuser",
 
 //Route:2 Create a user using: Post  dosn't require Auth: /api/auth/login
 
-router.post(
-  "/login",
+router.post("/login",
   [
     body("email", "enter a Valid Email").isEmail(),
     body("password", "password cannot be blank").exists(),
@@ -129,4 +128,5 @@ router.post("/getuser",fetchuser, async (req, res) => {
 
    })
 
+   
 module.exports = router;
