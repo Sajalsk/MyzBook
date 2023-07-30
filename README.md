@@ -1,3 +1,8 @@
+![Screenshot 2023-07-30 234829](https://github.com/Sajalsk/Inotebook/assets/86351716/ef9cee03-4c82-48e6-96e5-8788fe741ce7)
+![Screenshot 2023-07-30 235025](https://github.com/Sajalsk/Inotebook/assets/86351716/97c0a91c-64dd-42bb-b074-e68c3d716df4)
+![Screenshot 2023-07-30 235118](https://github.com/Sajalsk/Inotebook/assets/86351716/9dc3a61e-d2fb-4c70-b06f-d9f5690cc2d2)
+![Screenshot 2023-07-30 235137](https://github.com/Sajalsk/Inotebook/assets/86351716/33eaf9c1-aa35-4e58-b41e-3e7ef7ffa924)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
